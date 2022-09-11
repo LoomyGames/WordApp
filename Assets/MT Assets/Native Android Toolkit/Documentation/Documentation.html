@@ -1,0 +1,3244 @@
+<html>
+    <head>
+        <title>Native Android Toolkit - Documentation</title>
+        <link rel="shortcut icon" type="image/png" href="Files/favicon.png"/>
+        <link rel="shortcut icon" type="image/png" href="Files/favicon.png"/>
+        <meta charset="UTF-8">
+        <!-- #region CSS FORMATATIO -->
+        <style>
+            html,
+            body {
+                height: 100%;
+                width: 100%;
+            }
+    
+            body {
+                background-color: #686868;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                font-family: gotham, arial, helvetica, sans-serif;
+                font-size: 14px;
+                color: #303030;
+                padding: 0;
+                margin: 0 auto !important;
+            }
+    
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
+    
+            ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+    
+            ::-webkit-scrollbar-thumb {
+                background: #888;
+            }
+    
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+    
+            a {
+                text-decoration: none;
+                color: #374f77;
+            }
+    
+            a:link {
+                text-decoration: none;
+                color: #374f77;
+            }
+    
+            a:hover {
+                color: #374f77;
+                text-decoration: underline dotted #3a505b;
+            }
+    
+            a:visited {
+                color: #374f77;
+                text-decoration: none;
+            }
+    
+            hr {
+                border: 0;
+                height: 1px;
+                background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(206, 206, 206, 0.75), rgba(0, 0, 0, 0));
+            }
+    
+            .topBar {
+                z-index: 2;
+                width: 100%;
+                height: 45px;
+                position: fixed;
+                top: 0px;
+                background-color: #375e9b;
+                -webkit-box-shadow: 0px 2px 16px -2px rgba(0, 0, 0, 0.56);
+                -moz-box-shadow: 0px 2px 16px -2px rgba(0, 0, 0, 0.56);
+                box-shadow: 0px 2px 16px -2px rgba(0, 0, 0, 0.56);
+            }
+    
+            .summary {
+                position: fixed;
+                background-color: yellow;
+                left: 0px;
+                overflow: auto;
+                top: 45px;
+                background-color: #f9f9f9;
+                width: 300px;
+                height: 100%;
+                -webkit-box-shadow: 4px 0px 6px -2px rgba(0, 0, 0, 0.56);
+                -moz-box-shadow: 4px 0px 6px -2px rgba(0, 0, 0, 0.56);
+                box-shadow: 4px 0px 6px -2px rgba(0, 0, 0, 0.56);
+            }
+    
+            .subBody {
+                margin-top: 45px;
+                margin-left: 300px;
+                padding-left: 5%;
+                padding-right: 5%;
+                overflow: auto;
+                background-color: #ffffff;
+            }
+    
+            .content {
+                width: 100%;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+    
+            .summary-title {
+                color: #0c0c0c;
+                margin-top: 20px;
+                margin-bottom: 30px;
+                font-size: 16px;
+                font-weight: bolder;
+            }
+    
+            .title-1 {
+                color: #0c0c0c;
+                margin-top: 30px;
+                margin-bottom: 30px;
+                margin-left: 15px;
+                font-size: 20px;
+                font-weight: bolder;
+            }
+    
+            ul {
+                list-style-type: circle;
+                font-weight: normal;
+                font-size: 14px;
+            }
+    
+            li {
+                margin-top: 8px;
+                margin-bottom: 8px;
+            }
+    
+            .video {
+                background-color: #f2f2f2;
+                padding: 10px;
+                border-radius: 5px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                color: #595959;
+                font-style: italic;
+                text-align: center;
+            }
+    
+            .image {
+                background-color: #f2f2f2;
+                padding: 10px;
+                border-radius: 5px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                color: #595959;
+                font-style: italic;
+                text-align: center;
+            }
+    
+            .footer {
+                margin-top: 200px;
+                margin-bottom: 200px;
+            }
+    
+            .script {
+                background-color: #f2f2f2;
+                padding: 10px;
+                border-radius: 5px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                color: #595959;
+                width: auto;
+            }
+    
+            textArea {
+                font-family: "Courier New", Courier, monospace;
+                padding: 10px;
+                width: 100%;
+                height: auto;
+                border-radius: 5px;
+                resize: none;
+            }
+    
+            table,
+            td,
+            th {
+                border: 1px solid #ddd;
+                text-align: left;
+            }
+    
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+    
+            th,
+            td {
+                padding: 10px;
+            }
+        </style>
+        <!-- #endregion -->
+        <script src="Files/Prism/prism.js"></script>
+        <link rel="stylesheet" href="Files/Prism/prism.css">
+    </head>
+    <body>
+        <!-- #region PAGE TOPBAR -->
+        <!-- Topbar -->
+        <div class="topBar">
+            <div style="float: left; height: 45px; margin: 3px;">
+                <img src="Files/MTW.png" height="40px" />
+            </div>
+            <div style="float: left; height: 45px;">
+                <div style="line-height: 33px; vertical-align: middle; margin-left: 3px; color: #ffffff; font-weight: bold; font-size: 22px;">
+                    Native Android Toolkit Documentation
+                </div>
+                <div style="line-height: 8px; vertical-align: middle; margin-left: 3px; color: #d3d3d3; font-size: 10px;">
+                    for Unity Engine
+                </div>
+            </div>
+            <div style="float: right; height: 45px;">
+                <div style="line-height: 16px; vertical-align: middle; margin-right: 10px; color: #d3d3d3; font-size: 10px; text-align: right;">
+                    for support and contact
+                </div>
+                <div style="line-height: 25px; vertical-align: middle; margin-right: 10px; color: #ffffff; font-weight: bold; font-size: 16px;">
+                    mtassets@windsoft.xyz
+                </div>
+            </div>
+        </div>
+        <!-- #endregion -->
+
+        <!-- Summary -->
+        <div class="summary">
+            <div class="summary-title">
+                <center>Summary of Documentation</center>
+            </div>
+            <ul>
+                <li><a href="#1">What is the Native Android Toolkit</a></li>
+                <li><a href="#2">First steps to use</a></li>
+                <li><a href="#2aa">What is "IonicZip Imported"?</a></li>
+                <li><a href="#2a">Resolving compilation errors involving the "Preferences.cs" script</a></li>
+                <li>Asset Preferences</li>
+                <ul>
+                    <li><a href="#3">About Preferences</a></li>
+                    <li><a href="#4">Android Manifest</a></li>
+                    <li><a href="#4a">Some editable parameters in AndroidManifest</a></li>
+                    <li><a href="#5">NAT Core Settings</a></li>
+                    <li><a href="#5aa">Notifications icon</a></li>
+                    <li><a href="#5a">Notification and detection of manual device time change</a></li>
+                    <li><a href="#5b">Disabling unnecessary permissions</a></li>
+                    <li><a href="#5c">Wake Up permission and Accurate Notifications</a></li>
+                    <li><a href="#6">Editor Preferences</a></li>
+                    <li><a href="#6a">Applying preferences after updating NAT</a></li>
+                </ul>
+                <li>Dialogs</li>
+                <ul>
+                    <li><a href="#7">About This Class</a></li>
+                    <li><a href="#8">Simple Alert Dialog</a></li>
+                    <li><a href="#9">Confirmation Dialog</a></li>
+                    <li><a href="#10">Radial List Dialog</a></li>
+                    <li><a href="#11">Checkbox List Dialog</a></li>
+                    <li><a href="#12">Neutral Dialog</a></li>
+                </ul>
+                <li>Notifications</li>
+                <ul>
+                    <li><a href="#13">About This Class</a></li>
+                    <li><a href="#14">Send Push Notification</a></li>
+                    <li><a href="#15">Show a Toast</a></li>
+                    <li><a href="#16">Prepare a Inactivity Notifiacation</a></li>
+                    <li><a href="#17">Cancel a Inactivity Notification</a></li>
+                    <li><a href="#18">Schedule a Notification</a></li>
+                    <li><a href="#19">Cancel a Scheduled Notification</a></li>
+                    <li><a href="#19a">Converting an item from the Channel ENUM to INT and vice versa</a></li>
+                </ul>
+                <li>Sharing</li>
+                <ul>
+                    <li><a href="#20">About This Class</a></li>
+                    <li><a href="#21">Share Texture 2D</a></li>
+                    <li><a href="#22">Share Plain Text</a></li>
+                    <li><a href="#23">Take Screenshot And Save On Gallery</a></li>
+                    <li><a href="#23b">Take Screenshot And Get Texture2D</a></li>
+                    <li><a href="#24">Copy Text To Clipboard</a></li>
+                    <li><a href="#25">Get Text From Clipboard</a></li>
+                    <li><a href="#26">Open App In Play Store</a></li>
+                </ul>
+                <li>Utils</li>
+                <ul>
+                    <li><a href="#27">About This Class</a></li>
+                    <li><a href="#28">Checks and Hardware Verifications</a></li>
+                    <li><a href="#29">Vibrating The Device</a></li>
+                    <li><a href="#30">Using Device Flash Light</a></li>
+                    <li><a href="#31">Requesting App Permissions</a></li>
+                    <li><a href="#32">Get Android Version Code</a></li>
+                    <li><a href="#33">Restarting The Game Automatically</a></li>
+                    <li><a href="#34">Get The Unique Device ID Code</a></li>
+                    <li><a href="#35">Opening a System Settings</a></li>
+                </ul>
+                <li>Apps</li>
+                <ul>
+                    <li><a href="#36">About This Class</a></li>
+                    <li><a href="#37">Verify If a App Is Installed</a></li>
+                    <li><a href="#38">Open a App By Package Name</a></li>
+                </ul>
+                <li>Time</li>
+                <ul>
+                    <li><a href="#39">About This Class</a></li>
+                    <li><a href="#40">About The "Calendar" class</a></li>
+                    <li><a href="#41">Opening The Hour Picker</a></li>
+                    <li><a href="#42">Opening The Date Picker</a></li>
+                    <li><a href="#43">Load The NTP Current Time</a></li>
+                    <li><a href="#44">Get Elapsed Realtime Since Boot</a></li>
+                    <li><a href="#46">Get Date/Time of Last Close of App</a></li>
+                    <li><a href="#47">About the "TimeElapsedInfo" class</a></li>
+                    <li><a href="#48">Get Elapsed Time Since Last Close of App To This App Open</a></li>
+                    <li><a href="#49">Register Callback To Get Elapsed Time While App Was Paused</a></li>
+                </ul>
+                <li>Webview</li>
+                <ul>
+                    <li><a href="#50">About This Class</a></li>
+                    <li><a href="#51">Opening Webview</a></li>
+                </ul>
+                <li>Files</li>
+                <ul>
+                    <li><a href="#52">About This Class</a></li>
+                    <li><a href="#53">About The "FileRef" Class</a></li>
+                    <li><a href="#54">Checking Internal Memory Availability</a></li>
+                    <li><a href="#55">Getting Path To Internal Memory</a></li>
+                    <li><a href="#56">Getting Total Available Memory And Amount Used</a></li>
+                    <li><a href="#57">Create a Directory</a></li>
+                    <li><a href="#58">Create a New File</a></li>
+                    <li><a href="#59">Create Text or Image File</a></li>
+                </ul>
+                <li><a href="#60">Optimization Tips For Using Native Android Toolkit</a></li>
+                <li><a href="#61">Demo Scene</a></li>
+                <li><a href="#62">Contact and Support</a></li>
+            </ul>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+        <!-- Content -->
+        <div class="subBody">
+            <div class="content">
+                <!-- #region Welcome to Native Android Toolkit Documentation! -->
+                <br/>
+                <div class="title-1">
+                    Welcome to Native Android Toolkit Documentation!
+                </div>
+                By reading this documentation, you will understand how Native Android Toolikit works and how to use it and get the most out of it. Come on! Make sure that this HTML file is in the same directory as the "Files" folder.
+                This way you will not have problems with formatting and displaying the videos on the page.
+                <br/>
+                <br/>
+                <div style="padding: 16px; border-radius: 4px; background-color: #ff000050; color: #242424;">
+                    <p>If you still have problems with the tool, even after consulting this documentation, please contact <b>mtassets@windsoft.xyz</b> for help and support. If you have any questions, problems or feedback, feel free to contact me! I am always willing to help, open to suggestions and always do my best to offer a quick and useful service to my customers!</p>
+                </div>
+                <br/>
+                <br/>
+                <!-- #endregion -->
+
+                <!-- #region What is the Native Android Toolkit -->
+                <div class="title-1" id="1">
+                    What is the Native Android Toolkit
+                </div>
+                Native Android Toolkit is basically a tool that allows your game to access native Android system functions. With that in mind, you can be able to create spectacular games with engaging and fun functions, such as knowing how much time has passed
+                since the last game was closed, this is very useful for building systems for example.
+                <div class="video">
+                    <center>
+                        <iframe width="80%" height="310px" class="tscplayer_inline" id="embeddedSmartPlayerInstance" src="Files/Videos/Video-WhatIs/PlayerLocal.html?embedIFrameId=embeddedSmartPlayerInstance" scrolling="no" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                    </center>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region First steps to use -->
+                <div class="title-1" id="2">
+                    First steps to use
+                </div>
+                First and foremost is to run DataHandler installation in the first scene of your game. DataHandler is the bridge that enables your app (Unity C#) to talk to the Native Android Toolkit (Java Native of Android). It is important that DataHandler
+                is installed only on the first scene your game plays when it is opened, as DataHandler is indestructible and will be in all subsequent scenes. There are two ways to perform this installation, see below. If DataHandler is not installed on the
+                first scene of your app, most Native Android Toolkit functions and methods simply will not work when your app runs on an Android device.
+                <br/>
+                <br/>
+                <b>Running Setup Manually</b> - Setup is a Native Android Toolkit wizard that assists you with the DataHandler installation process. To run it manually, go to: "Tools> MT Assets> Native Android Toolkit> Open Setup".
+                <div class="image">
+                    <center>
+                        <img src="Files/Images/1.png" />
+                        <br/>
+                        Setup will assist you in the process of installing the DataHandler.
+                    </center>
+                </div>
+                <b>Using Auto Setup</b> - The dialog below appears whenever a build is run by the Editor, and Native Android Toolkit thinks DataHandler has not been installed in your project. In such cases, Native Android Toolkit will ask you if you would like
+                to install DataHandler.
+                <div class="image">
+                    <center>
+                        <img src="Files/Images/2.png" />
+                        <br/>
+                        If you do not wish to install, or have already done the installation, simply click "Do not ask again".
+                    </center>
+                </div>
+                <b>After installation</b> - After installation, a GameObject named "NAT DataHandler" will appear in your scene. This is the DataHandler. If DataHandler is in its initial scene, you don't need to worry about anything else, as
+                everything should be working as expected when you run your app on an Android device.
+                <!-- #endregion -->
+                
+                <!-- #region What is "IonicZip Imported"? -->
+                <div class="title-1" id="2aa">
+                    What is "IonicZip Imported"?
+                </div>
+                The first time you import Native Android Toolkit into your project, if there is no possible DLL conflicting with IonicZip, NAT will import the DLL called "IonicZip" into your project. This DLL is a DLL that compresses ZIP files and the Native 
+                Android Toolkit will use it to unzip the core library (NAT Core.aar) to apply the changes you want and then it will compress this core library back into an AAR file, without you having to edit anything manually! Thanks to this DLL it is possible 
+                for you to enable or disable permissions and make other settings all through the "Preferences" window of Native Android Toolkit, through the Editor. Read on to understand how it works!
+                <div class="image">
+                    <center>
+                        <img src="Files/Images/9.png" />
+                        <br/>
+                        Warning on import DLL
+                    </center>
+                </div>
+                <!-- #endregion -->
+
+                <!-- #region Resolving compilation errors involving the "Preferences.cs" script -->
+                <div class="title-1" id="2a">
+                    Resolving compilation errors involving the "Preferences.cs" script
+                </div>
+                If you have a ZIP file compression/unzipping DLL, or an internal Unity bug occurs, you may experience compilation errors involving the Preferences.cs file. This can happen due to a conflict with the Native Android Toolkit ZIP file 
+                compression/unzipping DLL, with some DLL in your project. NAT uses this DLL so that it can apply the changes you make in the "Preferences" window, accessible in "Tools > MT Assets > Native Android Toolkit > Preferences". Although 
+                NAT has an internal mechanism to prevent this from happening, you can still experience this problem.
+                <div class="image">
+                    <center>
+                        <img src="Files/Images/5.png" width="650" />
+                        <br/>
+                        Examples of compilation errors involving Preferences.cs
+                    </center>
+                </div>
+                To correct this problem, it is very simple. Just remove the definition "MTAssets_IonicZip_Available" from your project. To do this, go to Edit> Project Settings> Player. After doing so, your project will recompile and ignore parts of 
+                the script, which involve dependencies on the Native Android Toolkit's ZIP library.
+                <br>
+                <br>
+                If the problem still persists, repeat the step in the paragraph above and delete the script "IonicZip.cs" present in "Asets/MT Assets/Native Android Toolkit/Editor".
+                <br>
+                <br>
+                As stated earlier, NAT has an internal mechanism to deal with these types of conflicts, but if you have a problem, these steps can help you. In contrast, if you do any of these steps, NAT will not import your compression library, 
+                and you will not be able to apply your preferences made in the "Preferences" window. If you have experienced this problem, please contact <b>mtassets@windsoft.xyz</b> for assistance, as there is a possibility that you are experiencing some type 
+                of bug. I am always willing to help!
+                <div class="image">
+                    <center>
+                        <img src="Files/Images/6.png" />
+                        <br/>
+                        Fix
+                    </center>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region About Preferences -->
+                <div class="title-1" id="3">
+                    About Preferences
+                </div>
+                Asset Preferences allow you to customize both the APK that Unity will generate from your app, and the Java side of Native Android Toolkit. Best of all, you don't have to modify a single line of code! To open the preferences window, go to
+                "Tools> MT Assets> Native Android Toolkit> Preferences". Keep reading to understand more about each part.
+                <div class="image">
+                    <center>
+                        <img src="Files/Images/3.png" />
+                        <br/>
+                        Demonstration of Preferences window. Please keep in mind that disabling certain permissions will prevent some Native Android Toolkit API methods from working. For example, disabling Bluetooth permission will prevent Bluetooth
+                        scanning functions from working. If any Native Android Toolkit function crashes or doesn't work for no apparent reason, make sure the permission attached to it is enabled.
+                    </center>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Android Manifest -->
+                <div class="title-1" id="4">
+                    Android Manifest
+                </div>
+                The Android Manifest is a file called "AndroidManifest.xml" that is in your project. This file is responsible for showing your app's basic information to the Android system upon installation, so the Android system will know everything
+                your app needs, things like permissions, screens, and so on. Native Android Toolkit has tools for managing this file (or creating a new file in your project if the file does not exist). With this tool you can set up basic things in your
+                AndroidManifest.xml without having to edit or understand it! You can for example disable permission requests when your app is first opened, so you have a chance to request permissions yourself whenever you want! AndroidManifest.xml will
+                always be found in the "Assets / Plugins / Android" directory of your project. If this file does not exist, do not worry, your app still has an AndroidManifest.xml, but this will be one automatically generated by Unity with each build.
+                If you want to have your own AndroidManifest.xml, just select the "Yes, Create New If Not Exists" option in Native Android Toolkit preferences, so just save! Once an AndroidManifest.xml exists in your project, you can make changes to it
+                as you like, or you can use Native Android Toolkit for it.
+                <div class="image">
+                    <center>
+                        <img src="Files/Images/4.png" />
+                        <br/>
+                        Demonstration of the project AndroidManifest.xml file.
+                    </center>
+                </div>
+                <!-- #endregion -->
+
+                <!-- #region Some editable parameters in AndroidManifest -->
+                <div class="title-1" id="4a">
+                    Some editable parameters in AndroidManifest
+                </div>
+                If you want Native Android Toolkit Preferences to be able to edit your project's AndroidManifest.xml and consequently the APKs generated by your project, you can also change options and preferences! See below which parameters you can change.
+                <br>
+                <br>
+                <b>Declare Unity Activity</b> - Enables or disables the declaration of the "UnityPlayer" activity (the activity your game runs on) in the manifest. If this activity is not declared, it is as if Unity's activity did not exist.
+                <br>
+                <br>
+                <b>Is Main Activity</b> - A main activity is the first activity to be performed when the user taps the icon of your application. If Unity activity is not the main activity, it will not be performed when the user taps the icon of your app. This 
+                can be useful if you want to configure your manifest so that your app performs another activity when the user taps your app's icon. For example, the activity of a launcher that is displayed before displaying your game activity for example.
+                <br>
+                <br>
+                <b>Req. Perm. On Open</b> - By default, Unity activity will ask the user for all sensitive permissions (such as camera, files, etc.) right when their application is opened. This can cause a certain amount of user amazement, so if you disable 
+                this option, Unity will no longer ask for these permissions as soon as the app opens. This way you will have greater control over the permission request and can use the NAT API to ask the user for these permissions, after explaining what they 
+                will be used for!
+                <div class="image">
+                    <center>
+                        <img src="Files/Images/13.png" />
+                        <br/>
+                        Android Manifest Parameters
+                    </center>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region NAT Core Settings -->
+                <div class="title-1" id="5">
+                    NAT Core Settings
+                </div>
+                NAT Core is the Java library of the Native Android Toolkit. NAT Core is responsible for making everything work on the Native Java side, so it is a very important part of the Native Android Toolkit. With preferences you can change the
+                way some things work quickly and easily. You can change the icon of notifications that will be issued by your app using Native Android Toolkit, you can also turn off permissions that will not be used by your app, such as Camera
+                permissions and so on.
+                <!-- #endregion -->
+
+                <!-- #region Notifications icon -->
+                <div class="title-1" id="5aa">
+                    Notifications icon
+                </div>
+                You can change the icon that notifications launched by your application will display in the device's status bar, through NAT preferences. To do this, you must provide a transparent image and save the changes. The image you provide will 
+                be included within the Native Android Toolkit AAR library and will be used for scheduled notifications, etc.
+                <div class="image">
+                    <center>
+                        <img src="Files/Images/10.png" />
+                        <br/>
+                        Example
+                    </center>
+                </div>
+                <!-- #endregion -->
+
+                <!-- #region Notification and detection of manual device time change -->
+                <div class="title-1" id="5a">
+                    Notification and detection of manual device time change
+                </div>
+                The Native Android Toolkit has a small mechanism that monitors the clock of the device on which your application is running, and if this mechanism detects that the user has changed the date or time of your device, manually, the Native Android Toolkit 
+                can send you a notification in addition to store this information and the next time your app is opened, your app may have access to that information, to apply some kind of punishment or measure against the possible cheating action performed by the user. 
+                This can be useful for games that are based on time to make buildings for example, because if the user advances the time of the device, while his game is closed, he can speed up the construction of things, and that would be a cheat.
+                <br>
+                <br>
+                Knowing this, you can use some options to configure the alert notification sent to the user when the user changes the device time. You can disable or enable these notifications, in addition to changing the title and text of the notifications. Even if you 
+                disable these alerts, NAT will still continue to store information that the time has been changed manually, and that information will be available for your application to access until the next time it is opened. This information is only stored until the next 
+                time your app is opened, so if your app is closed, it will only be able to access that information again, if the user changes the time manually, again.
+                <br>
+                <br>
+                To find out how much time has passed while your app was minimized or closed, and if the user changed the time manually, use the methods "NativeAndroid.Time.GetElapsedTimeLastCloseUntilThisRun()" and the callback "TimeEvents.onResumeAppAfterPause" available 
+                in the NAT "Time" class.
+                <div class="image">
+                    <center>
+                        <img src="Files/Images/7.png" />
+                        <br/>
+                        Options
+                    </center>
+                </div>
+                <!-- #endregion -->
+
+                <!-- #region Disabling unnecessary permissions -->
+                <div class="title-1" id="5b">
+                    Disabling unnecessary permissions
+                </div>
+                Native Android Toolkit offers many functions, so by default it comes with all the necessary permissions already enabled and included. However, we don't always need all permissions and leaving permissions that our app doesn't use, 
+                enabled for the end user to see, may not seem like a good idea. For example, my application may not use file management, so there is no reason for me to request this permission from the user. Knowing this, Native Android Toolkit allows 
+                you to disable unnecessary permissions through the Preferences window. But remember that disabling a permission will cause a method that depends on that permission to stop working. For example, disabling the camera permission will 
+                cause the methods of turning the device’s flash light on and off to stop working. Disabling the file management permission will cause all methods in the file management class to stop working, and so on. You can always refer to 
+                each method here in the documentation to find out what permissions each method needs.
+                <div class="image">
+                    <center>
+                        <img src="Files/Images/11.png" />
+                        <br/>
+                        Permissions
+                    </center>
+                </div>
+                <!-- #endregion -->
+
+                <!-- #region Wake Up permission and Accurate Notifications -->
+                <div class="title-1" id="5c">
+                    Wake Up permission and Accurate Notifications
+                </div>
+                Starting with version M of Android, Google introduced a battery manager in the Android system. This mechanism is capable of putting the Android device in a mode called "deep sleep". This mode means that the device has been idle for a certain time 
+                and that is why the operating system turns off several features that do not make sense to remain connected, such as the mobile connection and other services. This saves a lot on the device's battery, however, it reduces the accuracy of some common 
+                tasks in some applications, such as the delivery of notifications, since while the device is in deep sleep the operating system manages the delivery of notifications in a that they be rescheduled and grouped with tasks from other applications, tasks 
+                that will be executed every 15 minutes for example, in different time windows.
+                <br>
+                <br>
+                The Android system has a feature called "Wake Lock". This feature allows the application to tell the operating system that such an application needs to remain active for a certain period, taking the device out of its deep sleep, however, depending 
+                on the task that such an application performs, battery consumption may increase, even though the application finishes this task, the phone will still take a while to return to its deep sleep, and while it is not in deep sleep, several features and 
+                functionality of the system continue to work without limits, until the phone goes back to sleep. When the user unlocks their device, deep sleep is also interrupted.
+                <br>
+                <br>
+                The problem with deep sleep, as stated earlier, is that it can ruin the way in which scheduled notifications are delivered or other types of tasks are performed. The Native Android Toolkit has notification scheduling functions, which can be affected 
+                by the way in which the Twelve of the devices work, or even the battery managers of some Interfaces work, Interfaces such as: MIUI (Xiaomi), ONE UI (Samsung) , EMUI (Huawei) and OxygenOS (OnePlus) for example. These can negatively affect the delivery 
+                of notifications not only from the Native Android Toolkit, but also from several Android applications.
+                <br>
+                <br>
+                Knowing this, the Native Android Toolkit provides the "Accurate Notifications" system which consists of a system that identifies the Android version and applies some checks to try to keep the delivery of notifications as faithfully and accurately as 
+                possible, even if Battery Managers get in the way. To activate this function, you only need to leave the "Wake Lock" permission and the "Accurate Notify" option enabled, then the Native Android Toolkit will take care of all inactivity notifications 
+                and notifications scheduled by you, trying to ensure that they are all delivered as expected. Keep in mind, "Accurate Notifications" can use up a little more battery power on the user's device.
+                <br>
+                <br>
+                The way "Accurate Notifications" works is very simple. If the device is not in deep sleep, scheduled notifications will be delivered normally, however, if the device is in deep sleep, NAT will wake you up a few moments before, deliver the notification 
+                using Wake Lock and after a few moments the device can go back to sleep. While the device is in deep sleep, it can still delay the delivery of notifications a bit, to ensure that there will be no excessive consumption of battery, this means that 
+                sometimes your notifications can take a few minutes longer than expected, to be delivered. The good thing is that with this active system, they will not be killed and simply forgotten by the systems and interfaces of different manufacturers.
+                <div class="image">
+                    <center>
+                        <img src="Files/Images/12.png" />
+                        <br/>
+                        Accurate Notifications
+                    </center>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Editor Preferences -->
+                <div class="title-1" id="6">
+                    Editor Preferences
+                </div>
+                Editor preferences change the way Native Android Toolkit works when it runs in the Unity Editor. There are no mysteries here, let's continue!
+                <!-- #endregion -->
+
+                <!-- #region Applying preferences after updating NAT -->
+                <div class="title-1" id="6a">
+                    Applying preferences after updating NAT
+                </div>
+                When the Native Android Toolkit is updated from the asset store, a new clean version of the native code core is received in your project, updating the version that existed in your project (NAT Core.aar). All of this native code and 
+                resources are stored in the AAR file "NAT Core", including the preferences you save in the Preferences window. After updating your NAT, to ensure that your preferences also apply to the new version of NAT Core, you must apply your preferences 
+                again from the Preferences window.
+                <br>
+                <br>
+                Native Android Toolkit also has a feature in the Editor, which is able to detect whether NAT Core has been updated or modified externally, so NAT will let you know that a NAT Core update has occurred and if you want to apply your 
+                existing preferences again to NAT Core, so your preferences will always continue to work!
+                <div class="image">
+                    <center>
+                        <img src="Files/Images/14.png" />
+                        <br/>
+                        Demonstration
+                    </center>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region About Class: Dialogs -->
+                <div class="title-1" id="7">
+                    About Class: Dialogs
+                </div>
+                The Dialogs class provides methods for displaying simple and fast dialogs with different functions. You can still register callbacks to receive the user's response.
+                Note: In order for callbacks to work, DataHandler must be correctly installed. To find out how to install it, <a href="#2">see here</a>.
+                <!-- #endregion -->
+                
+                <!-- #region Simple Alert Dialog -->
+                <div class="title-1" id="8">
+                    Simple Alert Dialog
+                </div>
+                To display a Simple Alert Dialog, use the code below. This is just a common dialog with a button.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Events;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Show dialog
+        NativeAndroid.Dialogs.ShowSimpleAlertDialog("Title", "Text");
+
+        //Register callback
+        DialogsEvents.onSimpleAlertDialogCancel += () =>
+        {
+            Debug.Log("On touch outside of dialog.");
+        };
+        DialogsEvents.onSimpleAlertDialogOk += () =>
+        {
+            Debug.Log("On touch in Ok button of dialog");
+        };
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Dialogs.ShowSimpleAlertDialog() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>title</td>
+                    <td>The title of simple alert dialog.</td></tr>
+                    <tr><td>text</td>
+                    <td>The text of simple alert dialog.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">To Callbacks</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Confirmation Dialog -->
+                <div class="title-1" id="9">
+                    Confirmation Dialog
+                </div>
+                To display a Confirmation Dialog, use the code below. This is just a dialog containing two buttons.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Events;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Show dialog
+        NativeAndroid.Dialogs.ShowConfirmationDialog("Title", "Text", "Yes Button", "No Button");
+
+        //Register callback
+        DialogsEvents.onConfirmationDialogCancel += () =>
+        {
+            Debug.Log("On touch outside of dialog.");
+        };
+        DialogsEvents.onConfirmationDialogYes += () =>
+        {
+            Debug.Log("On touch in Yes button of dialog");
+        };
+        DialogsEvents.onConfirmationDialogNo += () =>
+        {
+            Debug.Log("On touch in No button of dialog");
+        };
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Dialogs.ShowConfirmationDialog() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>title</td>
+                    <td>The title of simple confirmation dialog.</td></tr>
+                    <tr><td>text</td>
+                    <td>The text of simple confirmation dialog.</td></tr>
+                    <tr><td>yesButton</td>
+                    <td>The text of Yes button of confirmation dialog.</td></tr>
+                    <tr><td>noButton</td>
+                    <td>The text of No button of confirmation dialog.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">To Callbacks</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Radial List Dialog -->
+                <div class="title-1" id="10">
+                    Radial List Dialog
+                </div>
+                To display a Radial List Dialog, use the code below. This is just a dialog box that offers a list of options and the user can only select one of them.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Events;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Prepare the options
+        string[] arrayOfOptions = new string[] { "Option 1", "Option 2", "Option 3" };
+
+        //Show dialog
+        NativeAndroid.Dialogs.ShowRadialListDialog("Title", "Done Button", arrayOfOptions);
+
+        //Register callback
+        DialogsEvents.onRadialListDialogCancel += () =>
+        {
+            Debug.Log("On touch outside of dialog.");
+        };
+        DialogsEvents.onRadialListDialogDone += (int optionSelected) =>
+        {
+            Debug.Log("On touch in Done button of dialog. Option selected: " + optionSelected);
+        };
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Dialogs.ShowRadialListDialog() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>title</td>
+                    <td>The title of radial list dialog.</td></tr>
+                    <tr><td>doneButton</td>
+                    <td>The text of Done Button of radial list dialog.</td></tr>
+                    <tr><td>options</td>
+                    <td>A string array of options to user select one.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">To Callbacks</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Checkbox List Dialog -->
+                <div class="title-1" id="11">
+                    Checkbox List Dialog
+                </div>
+                To display a Checkbox List Dialog, use the code below. This is just a dialog box that offers a list of options and the user can select multiple options.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Events;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Prepare the options
+        string[] arrayOfOptions = new string[] { "Option 1", "Option 2", "Option 3" };
+
+        //Configure the default selected options, on open the checkbox dialog (same qty of options)
+        bool[] defaultSelected = new bool[] { false, false, false };
+
+        //Show dialog
+        NativeAndroid.Dialogs.ShowCheckboxListDialog("Title", "Done Button", arrayOfOptions, defaultSelected);
+
+        //Register callback
+        DialogsEvents.onCheckboxListDialogCancel += () =>
+        {
+            Debug.Log("On touch outside of dialog.");
+        };
+        DialogsEvents.onCheckboxListDialogDone += (bool[] optionsSelected) =>
+        {
+            Debug.Log("On touch in Done button of dialog. Options selected: " + optionsSelected);
+        };
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Dialogs.ShowCheckboxListDialog() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>title</td>
+                    <td>The title of checkbox list dialog.</td></tr>
+                    <tr><td>doneButton</td>
+                    <td>The text of Done Button of checkbox list dialog.</td></tr>
+                    <tr><td>options</td>
+                    <td>A string array of options to user select one.</td></tr>
+                    <tr><td>checkedOptions</td>
+                    <td>A string array of options that appear selected by default, on open the checkbox window.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">To Callbacks</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Neutral Dialog -->
+                <div class="title-1" id="12">
+                    Neutral Dialog
+                </div>
+                To display a Neutral Dialog, use the code below. This is just a dialog box that offers 3 buttons, with the neutral button appearing opposite or between the 2 common buttons.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Events;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Show dialog
+        NativeAndroid.Dialogs.ShowNeutralDialog("Title", "Text", "Yes Button", "No Button", "Neutral Button");
+
+        //Register callback
+        DialogsEvents.onNeutralCancel += () =>
+        {
+            Debug.Log("On touch outside of dialog.");
+        };
+        DialogsEvents.onNeutralNeutral += () =>
+        {
+            Debug.Log("On touch in Neutral button of dialog.");
+        };
+        DialogsEvents.onNeutralYes += () =>
+        {
+            Debug.Log("On touch in Yes button of dialog.");
+        };
+        DialogsEvents.onNeutralNo += () =>
+        {
+            Debug.Log("On touch in No button of dialog.");
+        };
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Dialogs.ShowCheckboxListDialog() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>title</td>
+                    <td>The title of neutral dialog.</td></tr>
+                    <tr><td>text</td>
+                    <td>The text of neutral dialog.</td></tr>
+                    <tr><td>yesButton</td>
+                    <td>The text of Yes Button of neutral dialog.</td></tr>
+                    <tr><td>noButton</td>
+                    <td>The text of No Button of neutral dialog.</td></tr>
+                    <tr><td>neutralButton</td>
+                    <td>The text of Neutral Button of neutral dialog.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">To Callbacks</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region About Class: Notifications -->
+                <div class="title-1" id="13">
+                    About Class: Notifications
+                </div>
+                This class gives you tools to notify your user. With push notifications, you send instant notifications in the status bar of the device in question. With inactivity notifications, your user will receive a notification if
+                they spend 3 days or more without opening your app. With scheduled notifications, you can choose a date/time in the future for a notification to be delivered to the user, and you can schedule up to 20 notifications. These
+                are delivered even if the app is closed and are very useful for notifying the user that something is ready, for example a build. All inactivity or scheduled notifications may be canceled by your app, but only if there are any
+                pending or scheduled notifications in the future.
+                
+                <div class="title-1" id="14">
+                    Send Push Notification
+                </div>
+                To post a push notification to the device status bar, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Send Notification
+        NativeAndroid.Notifications.SendPushNotification("Title of Notification", "Some amazing text!");
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Notifications.SendPushNotification() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>title</td>
+                    <td>The title of push notification.</td></tr>
+                    <tr><td>text</td>
+                    <td>The text of push notification.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Show Toast -->
+                <div class="title-1" id="15">
+                    Show Toast
+                </div>
+                To display a Toast notification, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Notify;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Show Notification
+        NativeAndroid.Notifications.ShowToast("Text of Toast", false, ToastPosition.Bottom);
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Notifications.ShowToast() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>text</td>
+                    <td>The text of toast notification.</td></tr>
+                    <tr><td>longDuration</td>
+                    <td>Show toast with a long duration?</td></tr>
+                    <tr><td>toasrPosition</td>
+                    <td>A enum to select target position of toast.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Prepare a Inactivity Notification -->
+                <div class="title-1" id="16">
+                    Prepare a Inactivity Notification
+                </div>
+                To prepare a notification of inactivity, to be delivered in 3 days. If a downtime notification is already scheduled, the last one will be overwritten by the new request.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Prepare inactivity notification
+        NativeAndroid.Notifications.PrepareInactivityNotification("Title of Notification", "Text");
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Notifications.PrepareInactivityNotification() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>title</td>
+                    <td>The title of inactivity notification.</td></tr>
+                    <tr><td>text</td>
+                    <td>The text of inactivity notification.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Cancel a Inactivity Notification -->
+                <div class="title-1" id="17">
+                    Cancel a Inactivity Notification
+                </div>
+                To cancel a scheduled inactivity notification, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Verify if exists a pendent inactivity notification
+        bool existsPendent = NativeAndroid.Notifications.isInactivityNotificationPrepared();
+
+        //Cancel the inactivity notification, if exists
+        if (existsPendent == true)
+        {
+            NativeAndroid.Notifications.CancelInactivityNotification();
+        }
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Schedule a Notification -->
+                <div class="title-1" id="18">
+                    Schedule a Notification
+                </div>
+                To schedule a notification to be delivered at a future date, use the code below.
+                <br>
+                <br>
+                Note: Each scheduled notification depends on a channel to be stored and delivered. There are a maximum of 20 channels in Native
+                Android Toolkit. If you schedule a notification on a channel that already has a notification scheduled, the old one will be overwritten on the channel. If you want to schedule 20 notifications, use a channel for
+                each of the notifications. Make sure you know which channel each notification is scheduled for if you need to cancel a scheduled notification later. A scheduled notification is still stored on a channel and everything
+                is kept even if your app is completely closed. You can cancel a scheduled notification even after restarting your app. Notification will still be delivered even if the app is closed.
+                <br>
+                <br>
+                Note that: When the device is turned off, it will forget all scheduled notifications, so the user will need to re-open their app for notifications to be scheduled. Delivery of notifications may also be delayed depending
+                on the state of the device. Usually this delay is on average 5 minutes.
+                <br>
+                <br>
+                Note: Some phones (like Samsung, Xiaomi, Huawei, and others) have battery saver services that can kill the notifications your app schedules. If you notice that your scheduled notifications are not being delivered, add
+                an exception for your app to your device's battery saver service. After that, your scheduled notifications should be delivered normally, but if the problem persists, please contact us for support. This is an unusual
+                problem, but it is helpful to know that this is a possibility!
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Notify;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Schedule the notification to future (Send notitification in 1 days, 3 hours, 2 minutes on future)
+        new NativeAndroid.Notifications.ScheduledNotification(Channel.Ch_1, "Title", "Amazing text")
+            .setYearsInFuture(0)
+            .setMonthsInFuture(0)
+            .setDaysInFuture(1)
+            .setHoursInFuture(3)
+            .setMinutesInFuture(2)
+            .ScheduleThisNotification();
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Notifications.ScheduledNotification() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>channel</td>
+                    <td>The channel that stores and send the scheduled notification.</td></tr>
+                    <tr><td>title</td>
+                    <td>The title of scheduled notification.</td></tr>
+                    <tr><td>text</td>
+                    <td>The text of scheduled notification.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Cancel a Scheduled Notification -->
+                <div class="title-1" id="19">
+                    Cancel a Scheduled Notification
+                </div>
+                To cancel a scheduled notification on a channel, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Notify;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Verify if the channel has a pendent scheduled notification
+        bool channelTwoExistsNotification = NativeAndroid.Notifications.isNotificationScheduledInChannel(Channel.Ch_2);
+
+        //Cancel the scheduled notification, if exists on channel 2
+        if(channelTwoExistsNotification == true)
+        {
+            NativeAndroid.Notifications.CancelScheduledNotification(Channel.Ch_2);
+        }
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Notifications.CancelScheduledNotification() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>channel</td>
+                    <td>The channel that stores and send the scheduled notification.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+
+                <!-- #region Converting an item from the Channel ENUM to INT and vice versa -->
+                <div class="title-1" id="19a">
+                    Converting an item from the Channel ENUM to INT and vice versa
+                </div>
+                To convert a channel Enum to an integer, or an integer to a channel Enum, use the methods below. This can be very useful for performing notification scheduling calculations!
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit.Notify;
+    
+public class ExampleScript : MonoBehaviour {
+    
+    void Start () {
+        //Convert a Channel to INT
+        int intChannel = ChannelTools.ChToInt(Channel.Ch_7);
+    
+        //Convert a INT to Channel
+        Channel channel = ChannelTools.IntToCh(7);
+    }
+}
+</code></pre>
+                <center>ChannelTools.ChToInt() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>channel</td>
+                    <td>The channel that stores and send the scheduled notification.</td></tr>
+                </table>
+                <br/>
+                <center>ChannelTools.IntToCh() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>intChannelID</td>
+                    <td>The channel (integer ID) that stores and send the scheduled notification.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region About Class: Sharing -->
+                <div class="title-1" id="20">
+                    About Class: Sharing
+                </div>
+                This class allows you to use Android system tools to share text, textures and so on.
+                <!-- #endregion -->
+
+                <!-- #region Share a Texture 2D -->
+                <div class="title-1" id="21">
+                    Share a Texture 2D
+                </div>
+                To share a 2D Texture of your game, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Example texture 2d
+        Texture2D exampleTexture2D = new Texture2D(16, 16);
+
+        //Share the texture 2D
+        NativeAndroid.Sharing.ShareTexture2D(exampleTexture2D);
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Sharing.ShareTexture2D() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>texture</td>
+                    <td>The Texture2D to share.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Files</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Share Plain Text -->
+                <div class="title-1" id="22">
+                    Share Plain Text
+                </div>
+                To share plain text, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Share the plain text
+        NativeAndroid.Sharing.SharePlainText("Title of Window", "This is a awesome text!");
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Sharing.SharePlainText() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>titleOfShareWindow</td>
+                    <td>The title of share window opened.</td></tr>
+                    <tr><td>textToShare</td>
+                    <td>The plain text to share.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Take Screenshot And Save On Gallery -->
+                <div class="title-1" id="23">
+                    Take Screenshot And Save On Gallery
+                </div>
+                To take a screenshot and save it to your device gallery, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Take screenshot and save
+        NativeAndroid.Sharing.TakeScreenshotAndSaveOnGallery();
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Files</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Take Screenshot And Get Texture2D -->
+                <div class="title-1" id="23b">
+                   Take Screenshot And Get Texture2D
+                </div>
+                To capture a screenshot and get it converted to Texture2D, use the code below. Processing may take a few moments, so register a callback to get the converted texture.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Events;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start (){
+        //Take screenshot and start the save
+        NativeAndroid.Sharing.TakeScreenshotAndGetTexture2D();
+
+        //Register the callback to get Texture2D after processing screenshot
+        SharingEvents.onCompleteTexture2Dprocessing += (Texture2D result) =>
+        {
+            Texture2D resultTexture2D = result;
+        };
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">Yes</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Files</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Copy Text To Clipboard -->
+                <div class="title-1" id="24">
+                    Copy Text To Clipboard
+                </div>
+                To copy plain text to the device clipboard, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Copy to clipboard
+        NativeAndroid.Sharing.CopyTextToClipboard("This is a awesome text :D");
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Sharing.CopyTextToClipboard() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>content</td>
+                    <td>The text to be copyied.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Get Text From Clipboard -->
+                <div class="title-1" id="25">
+                    Get Text From Clipboard
+                </div>
+                To get the text that is currently on the device clipboard, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Get current text from clipboard
+        string text = NativeAndroid.Sharing.GetTextFromClipboard();
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Open App In Play Store -->
+                <div class="title-1" id="26">
+                    Open App In Play Store
+                </div>
+                To open an app in the Play Store from its package name, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Open the gmail on Play Store
+        NativeAndroid.Sharing.OpenInPlayStore("com.google.android.gm");
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Sharing.CopyTextToClipboard() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>packageName</td>
+                    <td>The package name of target app to be open.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region About Class: Utils -->
+                <div class="title-1" id="27">
+                    About Class: Utils
+                </div>
+                The utility class offers a number of tools for your game to do Android checks, get information, ask for permissions, and so on.
+                <!-- #endregion -->
+                
+                <!-- #region Checks and Hardware Verifications -->
+                <div class="title-1" id="28">
+                    Checks and Hardware Verifications
+                </div>
+                Below are all the checks and checks you can do on your Android system using the Native Android Toolkit Utils class.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Is file permission gived (Requires files permission)
+        bool hasFilePermission = NativeAndroid.Utils.isFilePermissionGuaranteed();
+
+        //Is camera permission gived (Requires camera permission)
+        bool hasCameraPermission = NativeAndroid.Utils.isCameraPermissionGuaranteed();
+ 
+        //Is vibration available? (Requires vibration permission)
+        bool existsVibration = NativeAndroid.Utils.isVibrationAvailable();
+
+        //Is flash light available? (Requires camera permission)
+        bool existsFlashlight = NativeAndroid.Utils.isFlashLightAvailable();
+
+        //Is connected to a wifi network (Requires wifi state permission)
+        bool isConnectedToWifi = NativeAndroid.Utils.isConnectedToWifi();
+
+        //Is using wired headset (Requires modify audio permission)
+        bool isUsingHeadset = NativeAndroid.Utils.isUsingHeadset();
+        
+        //Is using wireless headset (Requires bluetooth permission)
+        bool isUsingWirelessHeadset = NativeAndroid.Utils.isUsingWirelessHeadset();
+
+        //Is internet connectivity available (Requires network state permission)
+        bool hasInternet = NativeAndroid.Utils.isInternetConnectivityAvailable();
+
+        //Is bluetooth enabled (Requires bluetooth permission)
+        bool bluetoothEnabled = NativeAndroid.Utils.isBluetoothEnabled();
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Files, Camera, Vibration, Wifi State, Net. State, Modify Audio and Bluetooth</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Vibrating The Device -->
+                <div class="title-1" id="29">
+                    Vibrating The Device
+                </div>
+                Use the code below to make the device vibrate.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start () {
+        //Vibrate with a time of 250 milliseconds
+        NativeAndroid.Utils.Vibrate(250);
+
+        //Vibrate with a pattern of time
+        NativeAndroid.Utils.VibrateWithPattern(new long[] { 100, 250, 100, 250, 100 });
+
+        //(Wait 100ms, vibrate during 250ms, wait 100ms...)
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Utils.Vibrate() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>duration</td>
+                    <td>Duration of vibration, in miliseconds.</td></tr>
+                </table>
+                <br/>
+                <center>NativeAndroid.Utils.VibrateWithPattern() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>patternOfMilliseconds</td>
+                    <td>A long array, that represents the pattern of vibration</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Vibration</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Using Device Flash Light -->
+                <div class="title-1" id="30">
+                    Using Device Flash Light
+                </div>
+                Use the code below to enable or disable the device lanyard. Keep in mind that using this method requires camera permission to be enabled and the user must have given it to their app.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start (){
+        //Enable the flash light
+        NativeAndroid.Utils.SetFlashLightEnabled(true);
+
+        //Disable the flash light
+        NativeAndroid.Utils.SetFlashLightEnabled(false);
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Utils.Vibrate() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>enabled</td>
+                    <td>Enable or disable the flash light?</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Camera</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Requesting App Permissions -->
+                <div class="title-1" id="31">
+                    Requesting App Permissions
+                </div>
+                To request permissions, use the code below. If the Android version does not have the permissions system, the methods below will simply be ignored, as older versions of Android already provided all permissions by default.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start (){
+        //You can only request sensitive permissions (such as Camera and File Management).
+        //Non-sensitive permissions are designed upon installation of your app.
+    
+        //To request file permissions (Requires files permission)
+        NativeAndroid.Utils.RequestFileMangementPermission();
+
+        //To request camera permissions (Requires camera permission)
+        NativeAndroid.Utils.RequestCameraPermission();
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Files and Camera</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Get Android Version Code -->
+                <div class="title-1" id="32">
+                    Get Android Version Code
+                </div>
+                To get the code for the version of Android your app is running on, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start (){
+        //Get the version code of Android that is running this app
+        int code = NativeAndroid.Utils.GetAndroidVersionCode();
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Restarting The Game Automatically -->
+                <div class="title-1" id="33">
+                    Restarting The Game Automatically
+                </div>
+                To restart Unity activity (Restart your app and return to the part where the "Made with Unity" logo appears), use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start (){
+        //Restart the Unity Play Activity
+        NativeAndroid.Utils.RestartUnityPlayer();
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Get The Unique Device ID Code -->
+                <div class="title-1" id="34">
+                    Get The Unique Device ID Code
+                </div>
+                To get the unique device ID, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start (){
+        //Get the device unique ID
+        string id = NativeAndroid.Utils.GetThisDeviceUniqueID();
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Opening a System Settings -->
+                <div class="title-1" id="35">
+                    Opening a System Settings
+                </div>
+                To open some system setup screen, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start (){
+        //Open default system settings
+        NativeAndroid.Utils.OpenSettings();
+
+        //Open wifi system settings
+        NativeAndroid.Utils.OpenWifiSettings();
+
+        //Open bluetooth system settings
+        NativeAndroid.Utils.OpenBluetoothSettings();
+
+        //Open this app system settings
+        NativeAndroid.Utils.OpenThisAppSettings();
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region About Class: Apps -->
+                <div class="title-1" id="36">
+                    About Class: Apps
+                </div>
+                This class allows your app to interact with other apps installed on the user's device.
+                <!-- #endregion -->
+                
+                <!-- #region Verify If a App Is Installed -->
+                <div class="title-1" id="37">
+                    Verify If a App Is Installed
+                </div>
+                To check if an app is currently installed, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start (){
+        //Is Gmail installed?
+        bool instaled = NativeAndroid.Apps.isAppInstalled("com.google.android.gm");
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Apps.isAppInstalled() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>packageName</td>
+                    <td>Package name of target app</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Open a App By Package Name -->
+                <div class="title-1" id="38">
+                    Open a App By Package Name
+                </div>
+                To open an app through its package name, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start (){
+        //Open the Gmail app
+        NativeAndroid.Apps.OpenAppByPackage("com.google.android.gm");
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Apps.OpenAppByPackage() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>packageName</td>
+                    <td>Package name of target app</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region About Class: Time -->
+                <div class="title-1" id="39">
+                    About Class: Time
+                </div>
+                The time class provides tools for you to calculate time, know how much time has passed in certain situations, upload a time from the internet, and so on. Please be aware that time-related Native Android Toolkit methods will always work with the
+                "Calendar" class to return time, or something similar. For example, if you make a request to get the network time, NAT will return you a "Calendar" object that contains the current network date and time. Therefore it is important for you to be
+                aware of and know how the Calendar class works. Keep reading to understand more.
+                <!-- #endregion -->
+                
+                <!-- #region About the "Calendar" class -->
+                <div class="title-1" id="40">
+                    About the "Calendar" class
+                </div>
+                The Calendar class has as its main goal, to facilitate the manipulation of time, time calculations and so on Unity. This class can be used simply for storing a date / time, calculating sum and subtraction of time, and more. See below for a
+                number of examples of using the Calendar class. You can store time periods within a Calendar object as well as redeem them. For example, you can take the current date, and subtract it from 1 year, then redeem the resulting subtraction values, all quickly!
+                <br>
+                <br>
+                Note that the Calendar class is a complete class and is sure to help you a lot with time manipulation and calculations!
+                <br>
+                <br>
+                If you prefer, you can store your app's build times, for example using the Calendar class, and it will be even easier to manipulate your app's build times!
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using System;
+using MTAssets.NativeAndroidToolkit.Time;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start (){
+        //Instantiate the Calendar with current date time
+        Calendar currentCalendar = new Calendar();
+
+        //Instantiate the Calendar with a unix time
+        Calendar unixCalendar = new Calendar(1566262662363);
+
+        //Instantiate the Calendar copying time of another Calendar
+        Calendar copyCalendar = new Calendar(currentCalendar);
+
+        //Instantiate the Calendar with a target time (2019/11/30 12:30:00)
+        Calendar targetTime = new Calendar(2019, 11, 30, 12, 30, 0);
+
+        //Get the time with each unit
+        Debug.Log("Current date: " + currentCalendar.Year + "/" + currentCalendar.Month + "/" + currentCalendar.Day);
+
+        //Get time of calendar, converted to unix time
+        long unixTime = currentCalendar.GetTimeUtcUnixMillis();
+
+        //Get time of calendar, converted to C# DateTime
+        DateTime dateTime = currentCalendar.GetDateTime(TimeMode.LocalTime);
+
+        //Get time of calendar, converted to C# TimeSpan
+        TimeSpan timeSpan = currentCalendar.GetTimeSpan();
+
+        //Get time of calendar, converted to Calendar Ticks
+        long calendarTicks = currentCalendar.GetCalendarTicks();
+
+        //Serialize the time of a calendar to a string, it's easy to save
+        string serializedCalendar = currentCalendar.SerializeToString();
+
+        //Deserialize the serialized string time, to a Calendar, it's eas to load
+        Calendar deserilizationResult = new Calendar();
+        deserilizationResult.DeserializeFromString(serializedCalendar);
+
+        //Change the time of a existant calendar
+        copyCalendar.SetTimeToZero(); //To reset the time, and set it to ZERO
+        copyCalendar.SetTimeToNow(); //To update the time, and set it to current time
+
+        //Increase the time of a existant Calendar, with 10 DAYS
+        copyCalendar.IncreaseIn(10, TimeSpanValue.Days);
+
+        //Decrease the time of a existant Calendar, with 7 DAYS
+        copyCalendar.DecreaseIn(7, TimeSpanValue.Days);
+
+        //Decrease from a Calendar, with a valid date (Decreasing 1 day, from current time calendar, result is date of yesterday)
+        currentCalendar.DecreaseWithDate(new Calendar(0, 0, 1, 0, 0, 0));
+
+        //Date logical operators. Useful for time-based checks and conditions!
+        if (copyCalendar.isEqualsZero() == true)
+        {
+            //Do something
+        }
+        if (copyCalendar.isEqualTo(currentCalendar) == true)
+        {
+            //Do something
+        }
+        if (copyCalendar.isNotEqualTo(currentCalendar) == true)
+        {
+            //Do something
+        }
+        if (copyCalendar.isGreaterThan(currentCalendar) == true)
+        {
+            //Do something
+        }
+        if (copyCalendar.isLessThan(currentCalendar) == true)
+        {
+            //Do something
+        }
+        if (copyCalendar.isGreaterThanOrEqualTo(currentCalendar) == true)
+        {
+            //Do something
+        }
+        if (copyCalendar.isLessThanOrEqualTo(currentCalendar) == true)
+        {
+            //Do something
+        }
+
+        //Extracting date/time values from a Calendar object
+        int year = currentCalendar.Year;
+        int month = currentCalendar.Month;
+        int day = currentCalendar.Day;
+        int hour = currentCalendar.Hour;
+        int minute = currentCalendar.Minute;
+        int second = currentCalendar.Second;
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Opening The Hour Picker -->
+                <div class="title-1" id="41">
+                    Opening The Hour Picker
+                </div>
+                To open a hour selector, default Android system and get the time selected by the user, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Time;
+using MTAssets.NativeAndroidToolkit.Events;
+
+public class ExampleScript {
+
+    //Inicialization
+	void Start (){
+        //Open hour picker
+        NativeAndroid.Time.OpenHourPicker("Title");
+
+        //Register the callback of selected hour
+        TimeEvents.onHourPicked += (Calendar hourPicked) =>
+        {
+            Debug.Log("Hour picked is: " + hourPicked.Hour + ":" + hourPicked.Minute);
+        };
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Time.OpenHourPicker() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>title</td>
+                    <td>The title of window of hour picker</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">To Callbacks</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Opening The Date Picker -->
+                <div class="title-1" id="42">
+                    Opening The Date Picker
+                </div>
+                To open a date selector, default Android system and get the date selected by the user, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Time;
+using MTAssets.NativeAndroidToolkit.Events;
+
+public class ExampleScript
+{
+
+    //Inicialization
+    void Start()
+    {
+        //Open hour picker
+        NativeAndroid.Time.OpenDatePicker("Title");
+
+        //Register the callback of selected date
+        TimeEvents.onDatePicked += (Calendar datePicked) =>
+        {
+            Debug.Log("Date picked is: " + datePicked.Year + "/" + datePicked.Month + "/" + datePicked.Second);
+        };
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Time.OpenDatePicker() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>title</td>
+                    <td>The title of window of hour picker</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">To Callbacks</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Load The NTP Current Time -->
+                <div class="title-1" id="43">
+                    Load The NTP Current Time
+                </div>
+                To load the current network date using the NTP protocol, use the code below. Your game may freeze for a few milliseconds while the date is downloaded.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Time;
+using MTAssets.NativeAndroidToolkit.Events;
+
+public class ExampleScript
+{
+
+    //Inicialization
+    void Start()
+    {
+        //Request the current time
+        NativeAndroid.Time.LoadCurrentTimeOfNtp();
+
+        //Register the callback of selected date
+        TimeEvents.onDatePicked += (Calendar networkDate) =>
+        {
+            Debug.Log("NTP Date is: " + networkDate.Year + "/" + networkDate.Month + "/" + networkDate.Second);
+        };
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">To Callbacks</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Internet</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Get Elapsed Realtime Since Boot -->
+                <div class="title-1" id="44">
+                    Get Elapsed Realtime Since Boot
+                </div>
+                To get the actual time elapsed from system startup to date, use the code below. The time returned is a time provided by the Android system, which can never be modified by the user, but is reset to zero each time the device is restarted.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Time;
+
+public class ExampleScript
+{
+
+    //Inicialization
+    void Start()
+    {
+        //Get elapsed realtime since boot of systme
+        Calendar elapsedTime = NativeAndroid.Time.GetElapsedRealtimeSinceBoot();
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Get Date/Time of Last Close of App -->
+                <div class="title-1" id="46">
+                    Get Date/Time of Last Close of App
+                </div>
+                Native Android Toolkit constantly monitors the runtime of your App, so Native Android Toolkit knows very closely the date / time your app was last closed. To get this time, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Time;
+
+public class ExampleScript
+{
+
+    //Inicialization
+    void Start()
+    {
+        //Date of last close of app
+        Calendar lastClose = NativeAndroid.Time.GetDateTimeOfLastClosing();
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region About the "TimeElapsedInfo" class -->
+                <div class="title-1" id="47">
+                    About the "TimeElapsedInfo" class
+                </div>
+                This is a small Native Android Toolkit class and it has no special tasks. Its only function is to return data about the elapsed time. This class will always be returned with a "Calendar" object (which is the elapsed time, this could be the elapsed
+                time while the app was closed for example), and a boolean variable that tells you if the device date / time was changed manually during this time. period of time. This class is only used by the next two methods you will see below!
+                <!-- #endregion -->
+
+                <!-- #region Get Elapsed Time Since Last Close of App To This App Open -->
+                <div class="title-1" id="48">
+                    Get Elapsed Time Since Last Close of App To This App Open
+                </div>
+                Native Android Toolkit constantly monitors the way time goes by in your app. Therefore, NAT knows the moment your app was last closed without problems. Keeping this in mind, Native Android Toolkit can calculate how much time has passed
+                while your app has been closed and this is very useful for eg building games where you need to know how much time has passed with the closed game to subtract the construction time! Native Android Toolkit uses the system's common clock to make
+                these calculations and the calculation to know how long it was while the game was closed, is to subtract the date the app was last closed by the exact date it was closed. The app has been opened now. Knowing the user can change this time,
+                Native Android Toolkit also constantly monitors the system clock, and he will know when the user has made any changes to this clock, and will inform you if while the app was closed, the user made a manual change. of date / time. See the code snippet below!
+                <br><br>For optimal accuracy, always call the method below in the first scene of your game, at the <b>START</b> method (<b>Start method only</b>), and cache that data. That way your app will know how long exactly it was while it was closed, and you can make your logical
+                calculations normally!
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Time;
+
+public class ExampleScript
+{
+
+    //Inicialization
+    void Start()
+    {
+        //Get elapsed time while the app is closed, this is called when app is started in first scene
+        TimeElapsedInfo elapsedTimeInfo = NativeAndroid.Time.GetElapsedTimeLastCloseUntilThisRun();
+
+        //Is date/time changed manually by user, while app is closed?
+        Debug.Log(elapsedTimeInfo.dateTimeWasChanged);
+
+        //Time elapsed while app is closed
+        Debug.Log(elapsedTimeInfo.elapsedTime);
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Register Callback To Get Elapsed Time While App Was Paused -->
+                <div class="title-1" id="49">
+                    Register Callback To Get Elapsed Time While App Was Paused
+                </div>
+                Following the same line of reasoning as the above method (please, if you have not read the above method, please read to understand this). Native Android Toolkit also monitors how long your app is paused (Your app may be paused by the
+                Android system for a variety of reasons, including: App Minimized, Phone Locked, Phone Call In Progress, etc ...). When your app is restored (resumed after pausing), Native Android Toolkit will return the elapsed time while paused via
+                a Callback. To get the elapsed time while the app has been paused, record Callback below in your script that makes your app's logical time calculations, so you will quickly and easily implement a logic to know the elapsed time while the
+                app has been paused. by the system!
+                <br><br>
+                If your app is terminated for any reason by the system or user (either out of memory, or user request), don't worry, you can use the above method to find out how long your app has been closed! You will not lose time accuracy because of this factor!
+                <br><br>
+                Be sure to register this Callback only once, to prevent your logic from executing more than once. This Callback will be called whenever your app is restored, after being paused, enjoy!
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit.Time;
+using MTAssets.NativeAndroidToolkit.Events;
+
+public class ExampleScript
+{
+
+    //Inicialization
+    void Start()
+    {
+        //Register callback for elapsed time when app is paused
+        TimeEvents.onResumeAppAfterPause += (TimeElapsedInfo elapsedTime) =>
+        {
+            //Is date/hour changed when app is paused?
+            Debug.Log(elapsedTime.dateTimeWasChanged);
+
+            //Elapsed time when app is paused
+            Debug.Log(elapsedTime.elapsedTime);
+        };
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">To Callbacks</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">None</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region About Class: Webview -->
+                <div class="title-1" id="50">
+                    About Class: Webview
+                </div>
+                This class allows you to open web pages within your app easily and quickly.
+                <!-- #endregion -->
+                
+                <!-- #region Opening Webview -->
+                <div class="title-1" id="51">
+                    Opening Webview
+                </div>
+                To open a Webview window on a given page, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Events;
+
+public class ExampleScript
+{
+    using MTAssets.NativeAndroidToolkit.Webview;
+
+    //Inicialization
+    void Start()
+    {
+        //Open webview on google site
+        NativeAndroid.Webview.OpenWebview("Title of Webview", "https://google.com.br", true, true);
+
+        //Register callback for on close webview
+        WebviewEvents.onWebviewClose += () =>
+        {
+            //Do something
+        };
+        
+        //Open webview on google site, in full screen, in a new android activity (this method not have callbacks)
+        NativeAndroid.Webview.OpenFullScreenWebview("Title of Webview", "https://google.com.br", true, true, WebviewOrientation.Landscape);
+    }
+}
+</code></pre>
+                <center>NativeAndroid.Webview.OpenWebview() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>title</td>
+                    <td>The title to show in Webview window</td></tr>
+                    <tr><td>url</td>
+                    <td>The URL to open with Webview</td></tr>
+                    <tr><td>showToolbar</td>
+                    <td>Show the default toolbar on top of Webview?</td></tr>
+                    <tr><td>showControls</td>
+                    <td>Show the default controls bar on bottom of Webview?</td></tr>
+                </table>
+                <br/>
+                <center>NativeAndroid.Webview.OpenFullScreenWebview() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>title</td>
+                    <td>The title to show in Webview window</td></tr>
+                    <tr><td>url</td>
+                    <td>The URL to open with Webview</td></tr>
+                    <tr><td>showToolbar</td>
+                    <td>Show the default toolbar on top of Webview?</td></tr>
+                    <tr><td>showControls</td>
+                    <td>Show the default controls bar on bottom of Webview?</td></tr>
+                    <tr><td>screenOrientation</td>
+                    <td>The default orientation of screen of webview</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">To Callbacks</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Internet</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region About Class: Files -->
+                <div class="title-1" id="52">
+                    About Class: Files
+                </div>
+                Native Android Toolkit's Files class gives you complete file management, all from your app's C # code, using the Native Android Toolkit API. You can read, save, open, move, copy files and so on. Keep reading to learn more.
+                <br>
+                <br>
+                Remember: Your game must have Files permission for management to work.
+                <!-- #endregion -->
+                
+                <!-- #region About The "FileRef" Class -->
+                <div class="title-1" id="53">
+                    About The "FileRef" Class
+                </div>
+                The FileRef class allows you to create a reference to an existing file or not in device storage. Once the reference is created and the file/folder exists, you can manage it (read data, rename, copy, move and etc). To create a reference, simply
+                instantiate a new object from the "FileRef" class and enter the path to the desired file or folder. After that, just manage! See below for an example of the FileRef class.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit;
+using MTAssets.NativeAndroidToolkit.Files;
+using MTAssets.NativeAndroidToolkit.Time;
+
+public class ExampleScript
+{
+    /*
+     All methods and variables of FileRef class
+     */
+
+    //Inicialization
+    void Start()
+    {
+        //Verify if the internal memory is available
+        if(NativeAndroid.File.isInternalMemoryAvailable() == false)
+        {
+            return;
+        }
+
+        //Get path of internal memory
+        string memory = NativeAndroid.File.GetInternalMemoryPath();
+
+        //Create a reference of a existent file
+        FileRef fileRef = new FileRef(memory + "/image.png");
+
+        //If the file not exists, cancel
+        if(fileRef.Exists == false)
+        {
+            return;
+        }
+
+        //Delete the file/folder (after delete the file, the fileRef.Exists returns false)
+        fileRef.Delete();
+
+        //Get the parent folder of the file/folder
+        FileRef parentFolder = fileRef.GetParentFolder();
+
+        //Update the reference of the file/folder (fileRef). This is useful to refresh informations after a file delete, move, verify if exists etc
+        fileRef.UpdateReference();
+
+        //Get base informations of this file
+        bool isDirectory = fileRef.IsDirectory; //This file of this fileRef is a directory?
+        bool isFile = fileRef.IsFile; //This file of this fileRef is a file?
+        bool isHidden = fileRef.IsHidden; //This file is hidden?
+        bool isWritable = fileRef.IsWritable; //This file is writable?
+        Calendar lastModifyDate = fileRef.LastModify; //Date of the last modify of this file
+
+        //If the fileRef is a file. (fileRef.ThisFile allows you to read and write the file of file ref) (only works if the fileRef is a file)
+        if (fileRef.IsFile == true)
+        {
+            //Copy the image.png to the folder "SampleFolder" in root folder of memory. The name of copy is "image.png"
+            fileRef.ThisFile.CopyTo(memory + "/SampleFolder");
+
+            //Move the image.png to the folder "SampleFolder" in root folder of memory. After move, original file not exists anymore.
+            fileRef.ThisFile.MoveTo(memory + "/SampleFolder");
+
+            //Read all bytes of image.png
+            byte[] bytes = fileRef.ThisFile.GetAllBytes();
+
+            //Read the file as string
+            string text = fileRef.ThisFile.GetAsTextString();
+
+            //Read the file as image
+            Texture2D image = fileRef.ThisFile.GetAsTexture2D();
+
+            //Open this file with the default associated app of system or instaled
+            fileRef.ThisFile.Open();
+
+            //Rename the image.png to imageRenamed.png. After this, the fileRef. Exists return false, maybe a new fileRef needs to be created
+            fileRef.ThisFile.Rename("imageRenamed.png");
+
+            //Set the image.png to read only
+            fileRef.ThisFile.SetReadOnly(true);
+
+            //Get informations of file
+            string ext = fileRef.ThisFile.Extension; //Pure extension of this file (returns "png")
+            string filePath = fileRef.ThisFile.Path; //The full path for this file
+            string pureName = fileRef.ThisFile.PureName; //The pure name of this file (returns "image")
+            float sizeInB = fileRef.ThisFile.Size.Bytes; //Returns the size of this file in Bytes
+            float sizeInKB = fileRef.ThisFile.Size.Kilobytes; //Returns the size of this file in Kilobytes
+            float sizeInMiB = fileRef.ThisFile.Size.Mebibytes; //Returns the size of this file in Mebibytes
+            float sizeInMB = fileRef.ThisFile.Size.Megabytes; //Returns the size of this file in Megabytes
+            float sizeInGB = fileRef.ThisFile.Size.Gigabytes; //Returns the size of this file in Gigabytes
+        }
+
+        //fileRef.ThisFolder allows you to read and write the folder of fileRef. If the fileRef is a file, the fileRef.ThisFolder allows you to read and write the parent folder of the file
+        
+        //Returns a array of all files present in this folder
+        FileRef[] filesInThisFolder = fileRef.ThisFolder.GetAllFiles();
+
+        //Get the name of folder
+        string name = fileRef.ThisFolder.Name; //Return the name of folder
+        string path = fileRef.ThisFolder.Path; //Return full path of folder
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">No</td>
+                        <td style="text-align: center;">No</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Files</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Checking Internal Memory Availability -->
+                <div class="title-1" id="54">
+                    Checking Internal Memory Availability
+                </div>
+                Before managing files in the internal memory of an Android device, you should always make sure that internal memory is available. It may happen that memory is not available while the phone is connected to a USB cable and so on.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript
+{
+
+    //Inicialization
+    void Start()
+    {
+        //Verify if the internal memory is available
+        bool available = NativeAndroid.File.isInternalMemoryAvailable();
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Files</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Getting Path To Internal Memory -->
+                <div class="title-1" id="55">
+                    Getting Path To Internal Memory
+                </div>
+                To get the path to the root folder of device memory, use the code below. This method will return the exact path to the root folder of memory, so you can edit files more easily!
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript
+{
+
+    //Inicialization
+    void Start()
+    {
+        //Get internal memory path
+        string internalMemoryPath = NativeAndroid.File.GetInternalMemoryPath();
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Files</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Getting Total Available Memory And Amount Used -->
+                <div class="title-1" id="56">
+                    Getting Total Available Memory And Amount Used
+                </div>
+                To get the total size of the device memory, and the memory available for use, use the command below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript
+{
+
+    //Inicialization
+    void Start()
+    {
+        //Get total memory size
+        float totalMemory = NativeAndroid.File.GetTotalDeviceMemory().Gigabytes;
+
+        //Get free memory size
+        float freeMemory = NativeAndroid.File.GetTotalDeviceMemory().Gigabytes;
+    }
+}
+</code></pre>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Files</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Create a Directory -->
+                <div class="title-1" id="57">
+                    Create a Directory
+                </div>
+                To create a folder/directory, use the command below. If the directory or folder does not exist, it will be created. Remember: When you create an existing file / folder, the old one will be overwritten by the new one.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript
+{
+
+    //Inicialization
+    void Start()
+    {
+        //Get internal memory
+        string internalMemory = NativeAndroid.File.GetInternalMemoryPath();
+
+        //Create a folder named "NAT"
+        NativeAndroid.File.CreateDirectory(internalMemory + "/NAT");
+
+        //Create a directory
+        NativeAndroid.File.CreateDirectory(internalMemory + "Sample/Directory/ForTest");
+    }
+}
+</code></pre>
+                <center>NativeAndroid.File.CreateDirectory() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>path</td>
+                    <td>The path to new directory to be created.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Files</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Create a New File -->
+                <div class="title-1" id="58">
+                    Create a New File
+                </div>
+                To create a new file in memory from a byte array, use the code below. Remember: When you create an existing file / folder, the old one will be overwritten by the new one.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript
+{
+    byte[] sampleBytes;
+
+    //Inicialization
+    void Start()
+    {
+        //Get internal memory
+        string internalMemory = NativeAndroid.File.GetInternalMemoryPath();
+
+        //Create a new File
+        NativeAndroid.File.CreateFile(internalMemory + "/newFile.mp3", sampleBytes);
+    }
+}
+</code></pre>
+                <center>NativeAndroid.File.CreateFile() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>pathToNewFile</td>
+                    <td>The path to new file to be created.</td></tr>
+                    <tr><td>bytesToSave</td>
+                    <td>The byte array to save into the new file.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Files</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+
+                <!-- #region Create Text or Image File -->
+                <div class="title-1" id="59">
+                    Create Text or Image File
+                </div>
+                To save a string or Texture2D into a file in memory, use the code below.
+                <div class="script">
+                <center>Script C#<br/><br/></center>
+<pre><code class="language-csharp">
+using UnityEngine;
+using MTAssets.NativeAndroidToolkit;
+
+public class ExampleScript
+{
+    Texture2D sampleTexture;
+    string sampleText;
+
+    //Inicialization
+    void Start()
+    {
+        //Get internal memory
+        string internalMemory = NativeAndroid.File.GetInternalMemoryPath();
+
+        //Create a image file
+        NativeAndroid.File.CreateImageFile(internalMemory + "/newImage.png", sampleTexture);
+
+        //Create a text file
+        NativeAndroid.File.CreateTextFile(internalMemory + "/newText.txt", sampleText);
+    }
+}
+</code></pre>
+                <center>NativeAndroid.File.CreateImageFile() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>pathToNewFile</td>
+                    <td>The path to new file to be created.</td></tr>
+                    <tr><td>textureToSave</td>
+                    <td>The Texture2D to save into the new file.</td></tr>
+                </table>
+                <br/>
+                <center>NativeAndroid.File.CreateTextFile() - Parameters</center>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th width="100px">Variable</th><th>Description</th></tr>
+                    <tr><td>pathToNewFile</td>
+                    <td>The path to new file to be created.</td></tr>
+                    <tr><td>textToSave</td>
+                    <td>The string to save into the new file.</td></tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Works With Editor?</th><th style="text-align: center;">Launch Debug Logs?</th><th style="text-align: center;">Works With Android?</th><th style="text-align: center;">Requires DataHandler Installed?</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Only Simulation</td>
+                        <td style="text-align: center;">Only In Editor</td>
+                        <td style="text-align: center;">Yes</td>
+                        <td style="text-align: center;">No</td>
+                    </tr>
+                </table>
+                <br/>
+                <table style="font-size: 13px;">
+                    <tr><th style="text-align: center;">Required Permissions</th></tr>
+                    <tr>
+                        <td style="text-align: center;">Files</td>
+                    </tr>
+                </table>
+                </div>
+                <!-- #endregion -->
+                
+                <!-- #region Optimization tips for using Native Android Toolkit -->
+                <div class="title-1" id="60">
+                    Optimization tips for using Native Android Toolkit
+                </div>
+                <b>Avoid calling functions often in a short time interval (as in Update for example)</b>
+                <br/>
+                Each time you call a NAT function, Unity has to communicate with native Android. If the functions are called excessively, this can cause performance problems, so avoid calling functions in methods such as Update.
+                <br/>
+                <br/>
+                <b>Avoid working with gigantic files!</b>
+                <br/>
+                Working with very large files, may cause memory loss on older devices, be careful!
+                <br/>
+                <!-- #endregion -->
+                
+                <!-- #region Demo Scene -->
+                <div class="title-1" id="61">
+                    Demo Scene
+                </div>
+                You can enter the demo scene "DemoScene" to see how the Native Android Toolkit works closely! See right now and study the documentation, so you'll fully understand the merge process. The scene has several Native Android Toolkit functions, which you can run on your Android device.
+                If you run the functions in the Editor, you will only see simulations of the functions, so I recommend that you compile the scene and run it on your device!
+                <!-- #endregion -->
+
+                <!-- #region Contact and Support -->
+                <div class="title-1" id="62">
+                    Contact and Support
+                </div>
+                Congratulations, you have reached the end of the documentation! Thanks for reading. If you need to contact me for any difficulty, feature suggestion, bug fix, question or support, just contact me through my email below!
+                <br>
+                <br/>
+                <center><font style="font-size: 18px; color: #00771d;">mtassets@windsoft.xyz</font></center>
+                <!-- #endregion -->
+                
+                <div class="footer">
+                    <center>
+                        <hr/>
+                        <br/>
+                        <br/>
+                        <small>
+                            On-line links
+                            <br/>
+                            <br/>
+                            <a href="https://www.youtube.com/channel/UCqAgiYBwAWajjFUqyJ6_xyw?view_as=subscriber" target="_blank">Youtube Channel</a>
+                             • 
+                            <a href="https://assetstore.unity.com/publishers/40306" target="_blank">MT Assets</a>
+                             • 
+                            <a href="https://windsoft.xyz/ForBrowsers/MTAssets/Home.php" target="_blank">Site</a>
+                        </small>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
